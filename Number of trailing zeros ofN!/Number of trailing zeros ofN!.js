@@ -10,21 +10,24 @@
 
 function numberOfTrailing(n) {
 var array = [1];
-for (var j = 1; j <=n; j++) {
-	for (var i = 0; i < array.length+1; i++) {
-		if (i===0){
-			array[i]=array[i]*j
-		}else if(array[i-1] > 9 && array[i] === undefined){
-			array[i] = parseInt(array[i-1]/10);
-			array[i-1]=array[i-1]%10;
-		}else if (array[i-1] > 9 && array[i] !== undefined){
-			array[i] = parseInt(array[i-1]/10) + array[i]*j;
-			array[i-1]=array[i-1]%10;
-		}else if (array[i] < 9 && array[i] !== undefined){
-			array[i] = array[i]*j;
+	for (var j = 1; j <=n; j++) {
+		for (var i = 0; i <= array.length; i++) {
+			if (i===0){
+				array[i]=array[i]*j
+			}else if(array[i-1] > 9 && array[i] === undefined){
+				array[i] = parseInt(array[i-1]/10);
+				array[i-1]=array[i-1]%10;
+			}else if (array[i-1] > 9 && array[i] !== undefined){
+				array[i] = parseInt(array[i-1]/10) + array[i]*j;
+				array[i-1]=array[i-1]%10;
+			}else if (array[i] < 9 && array[i] !== undefined){
+				array[i] = array[i]*j;
+			}
 		}
 	}
-	//array.push(0);
-}
-return array;
+		var i = 0;
+		while(array[i]===0){
+		i++
+		}
+		return i;
 }
